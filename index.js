@@ -12,17 +12,17 @@ module.exports = function throttle (func, wait) {
     var delay = wait - (now - last)
     if (timeout) {
       debug('queueing')
-      queue.push(func)
+      queue.push([this, arguments])
       return
     }
 
     if (delay < 0) {
       debug('running')
       last = now
-      return func()
+      return func.apply(this, arguments)
     }
 
-    queue.push(func)
+    queue.push([this, arguments])
     timeoutUnqueue(delay)
   }
 
@@ -36,7 +36,9 @@ module.exports = function throttle (func, wait) {
       timeout = null
       last = Date.now()
       debug('running throttled')
-      queue.shift()() // run throttled function
+      var ctxAndArgs = queue.shift()
+      func.apply(ctxAndArgs[0], ctxAndArgs[1])
+
       if (queue.length) timeoutUnqueue(wait)
     }, millis)
   }

@@ -1,0 +1,33 @@
+{
+  "author": "Mark Vayngrib <mark.vayngrib@lablz.com> (http://github.com/mvayngrib)",
+  "bugs": {
+    "url": "https://github.com/mvayngrib/throttleme/issues"
+  },
+  "description": "simple throttling",
+  "devDependencies": {
+    "pre-commit": "latest",
+    "standard": "latest",
+    "tape": "latest"
+  },
+  "homepage": "https://github.com/mvayngrib/throttleme",
+  "keywords": [
+    "throttle",
+    "rate-limit",
+    "util"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "throttleme",
+  "pre-commit": [
+    "style"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mvayngrib/throttleme.git"
+  },
+  "scripts": {
+    "style": "standard",
+    "test": "node test"
+  },
+  "version": "1.0.0"
+}
